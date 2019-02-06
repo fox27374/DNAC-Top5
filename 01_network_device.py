@@ -37,11 +37,9 @@ if __name__ == "__main__":
     
     # Get device list
     response = list_network_devices()
-    print("\n"
-            )
+    print("\n")
     # Print header
-    print("{0:32}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".
-                  format("Hostname", "IP Address", "Serial", "Platform", "SW Version", "Role", "Uptime"))
+    print("{0:32}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".format("Hostname", "IP Address", "Serial", "Platform", "SW Version", "Role", "Uptime"))
 
     # Check if filters are applied
     if len(sys.argv) <= 1:
@@ -56,12 +54,4 @@ if __name__ == "__main__":
         else:
             serialPlatformList = [(device['serialNumber'], device['platformId'])]
         for (serialNumber,platformId) in serialPlatformList:
-            # Print list
-            print("{0:32}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".
-                  format(device['hostname'],
-                         device['managementIpAddress'],
-                         serialNumber,
-                         platformId,
-                         device['softwareVersion'],
-                         device['role'],
-                         uptime))
+            print("{0:32}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".format(device['hostname'], device['managementIpAddress'], serialNumber, platformId, device['softwareVersion'], device['role'], uptime))
