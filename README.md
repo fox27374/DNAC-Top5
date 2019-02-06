@@ -9,11 +9,14 @@ pip install requests[secure]
 ```
 
 You change the controller credentials either through environment variables or by editing the dnac_config.py file
+
+
 ## 01_network_device.py
-This script will show all of the network devices in the inventory of Cisco DNA Center.
+This script will show all of the network devices in the inventory of Cisco DNA Center. Filters can be applied via arguments.
 ```buildoutcfg
 ./01_network_device.py
-./01_network_device.py 10.10.22.70
+./01_network_device.py --ip 10.10.22.70
+./01_network_device.py --hostname cisco
 
 ```
 ## 02_interface_device.py
