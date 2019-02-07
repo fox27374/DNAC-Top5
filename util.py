@@ -9,6 +9,7 @@ sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.par
 #from tests.fake import fake, fake_post
 #FAKE=True
 FAKE=False
+DEBUG=False
 
 
 from dnac import get_auth_token, create_url, wait_on_task
@@ -18,7 +19,8 @@ def get_url(url):
     if FAKE:
         return fake[url]
     url = create_url(path=url)
-    print(url)
+    if DEBUG:
+        print(url)
     token = get_auth_token()
     headers = {'X-auth-token' : token['token']}
     try:

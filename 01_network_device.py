@@ -14,6 +14,9 @@ def list_network_devices():
 def create_filtered_list(response):
     f_list=[]
     for device in response['response']:
+        # Remove devices where the status is "unreached"
+        if device['hostname'] is None:
+            continue
         if args.hostname and args.hostname in device['hostname']:
             f_list.append(device)
         if args.ip and args.ip in device['managementIpAddress']:
@@ -48,6 +51,9 @@ if __name__ == "__main__":
         filtered_list = create_filtered_list(response)
 
     for device in filtered_list:
+        # Remove devices where the status is "unreached"
+        if device['hostname'] is None:
+            continue
         uptime = "N/A" if device['upTime'] is None else device['upTime']
         if  device['serialNumber'] is not None and "," in device['serialNumber']:
             serialPlatformList = zip(device['serialNumber'].split(","), device['platformId'].split(","))
